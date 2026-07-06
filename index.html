@@ -9,18 +9,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
-      --gold-dim: rgba(201,168,76,0.15);
-      --bg: #060606;
-      --bg-2: #0a0a0a;
-      --bg-card: #0f0f0f;
-      --border: #1a1a1a;
-      --border-2: #252525;
-      --text: #F0F0F0;
-      --text-muted: #666;
-      --text-dim: #999;
-      --success: #4CAF82;
+      --gold: #B08F35; /* Slightly darker gold for better contrast on white */
+      --gold-light: #C9A84C;
+      --gold-dim: rgba(176,143,53,0.08);
+      --bg: #FFFFFF;
+      --bg-2: #F9F9F9;
+      --bg-card: #FFFFFF;
+      --border: #E5E5E5;
+      --border-2: #D1D1D1;
+      --text: #1A1A1A;
+      --text-muted: #717171;
+      --text-dim: #4A4A4A;
+      --success: #2E7D32;
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
 
     html { scroll-behavior: smooth; }
@@ -35,18 +36,16 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ═══════════════════════════
-       NAV
-    ═══════════════════════════ */
+    /* ─── NAV ─── */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.4rem 5%;
+      padding: 1.2rem 5%;
       position: sticky;
       top: 0;
-      background: rgba(6,6,6,0.92);
-      backdrop-filter: blur(24px);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       z-index: 200;
     }
@@ -54,1162 +53,202 @@
     .logo-wrap { display: flex; flex-direction: column; }
     .logo-name {
       font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--text);
       text-transform: uppercase;
     }
+    .logo-name span { color: var(--gold); }
     .logo-tag {
-      font-size: 0.52rem;
-      letter-spacing: 0.3em;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-right { display: flex; gap: 1rem; align-items: center; }
-
-    .btn-link {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color 0.2s;
-      padding: 0.5rem 0.75rem;
-    }
-    .btn-link:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
 
     .btn-gold {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.65rem 1.5rem;
+      padding: 0.7rem 1.4rem;
       background: var(--gold);
-      color: #060606;
+      color: #FFF;
       border: none;
       cursor: pointer;
-      transition: background 0.2s;
+      border-radius: 2px;
     }
-    .btn-gold:hover { background: var(--gold-light); }
 
-    /* ═══════════════════════════
-       ANNOUNCEMENT BAR
-    ═══════════════════════════ */
-    .announce {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 0.65rem 5%;
-      background: rgba(201,168,76,0.06);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
-    }
-    .announce strong { color: var(--gold); font-weight: 700; }
-    .announce-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--success);
-      animation: blink 2s infinite;
-      flex-shrink: 0;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* ═══════════════════════════
-       HERO
-    ═══════════════════════════ */
+    /* ─── HERO ─── */
     .hero {
-      padding: 7rem 5% 5rem;
+      padding: 8rem 5% 6rem;
       max-width: 1280px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 6rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
       align-items: center;
-    }
-
-    .hero-left {}
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.75rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--gold);
-      display: block;
     }
 
     .hero h1 {
-      font-size: clamp(2.75rem, 5.5vw, 5rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 900;
-      line-height: 1.03;
-      letter-spacing: -0.03em;
-      margin-bottom: 2rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--gold);
-    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
 
     .hero-body {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       color: var(--text-dim);
-      line-height: 1.8;
-      max-width: 520px;
+      line-height: 1.7;
+      max-width: 540px;
       margin-bottom: 2.5rem;
     }
 
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 3.5rem;
-    }
-
     .btn-hero {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.95rem 2.5rem;
-      background: var(--gold);
-      color: #060606;
+      padding: 1.1rem 2.8rem;
+      background: var(--text);
+      color: #FFF;
       border: none;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.2s;
     }
-    .btn-hero:hover { background: var(--gold-light); }
+    .btn-hero:hover { transform: translateY(-2px); }
 
-    .btn-hero-ghost {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.95rem 2rem;
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border-2);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-hero-ghost:hover { border-color: var(--text-muted); color: var(--text); }
-
-    .hero-proof {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    .hero-proof-text {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .hero-proof-text strong { color: var(--text-dim); }
-    .hero-divider {
-      width: 1px; height: 28px;
-      background: var(--border-2);
-      flex-shrink: 0;
-    }
-
-    /* HERO RIGHT — live signal card */
-    .hero-right {}
-
+    /* ─── SIGNAL CARD (LIGHT) ─── */
     .signal-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 4px;
       overflow: hidden;
     }
 
     .signal-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
       background: var(--bg-2);
     }
 
-    .signal-card-title {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .live-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--success);
-    }
-    .live-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--success);
-      animation: blink 2s infinite;
-    }
-
-    .signal-items {}
-
     .signal-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1.1rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .signal-item:last-child { border-bottom: none; }
-    .signal-item:hover { background: var(--bg-2); }
-
-    .sig-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 4px;
-    }
-    .sig-dot.high { background: var(--success); box-shadow: 0 0 7px var(--success); }
-    .sig-dot.medium { background: #E08C2A; }
-
-    .sig-body { flex: 1; }
-    .sig-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.2rem; }
-    .sig-meta { font-size: 0.68rem; color: var(--text-muted); }
-
-    .sig-right { text-align: right; flex-shrink: 0; }
+    .sig-name { font-weight: 700; font-size: 0.95rem; }
+    .sig-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
     .sig-type {
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
       background: var(--gold-dim);
-      padding: 0.2rem 0.55rem;
-      display: block;
-      margin-bottom: 0.3rem;
+      padding: 0.3rem 0.6rem;
     }
-    .sig-time { font-size: 0.65rem; color: var(--text-muted); }
 
-    .signal-card-footer {
-      padding: 1rem 1.25rem;
-      border-top: 1px solid var(--border);
+    /* ─── STATS ─── */
+    .stats {
       background: var(--bg-2);
-      text-align: center;
-      font-size: 0.68rem;
-      color: var(--text-muted);
-    }
-
-    /* ═══════════════════════════
-       LOGOS / TRUST
-    ═══════════════════════════ */
-    .trust {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2.5rem 5%;
-      text-align: center;
-    }
-    .trust-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-    .trust-stats {
-      display: flex;
-      justify-content: center;
-      gap: 5rem;
-      flex-wrap: wrap;
-    }
-    .trust-stat-num {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-    .trust-stat-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* ═══════════════════════════
-       PROBLEM
-    ═══════════════════════════ */
-    .problem {
-      padding: 8rem 5%;
-      background: var(--bg-2);
+      padding: 4rem 5%;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .problem-inner {
+    .stats-grid {
       max-width: 1280px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-body {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-
-    .problem-points {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-    .problem-point {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-    }
-    .pp-num {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      padding-top: 3px;
-      flex-shrink: 0;
-    }
-    .pp-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-    .pp-body {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-
-    .callout-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-2);
-      padding: 3.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .callout-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--gold);
-    }
-    .callout-stat {
-      font-size: 6rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
-    .callout-text {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--text-dim);
-    }
-    .callout-text strong { color: var(--text); font-weight: 700; }
-
-    /* ═══════════════════════════
-       HOW IT WORKS
-    ═══════════════════════════ */
-    .how {
-      padding: 8rem 5%;
-    }
-    .how-inner { max-width: 1280px; margin: 0 auto; }
-
-    .how-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-      margin-bottom: 4rem;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-    .step {
-      background: var(--bg);
-      padding: 3rem 2.5rem;
-      position: relative;
-    }
-    .step::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: transparent;
-      transition: background 0.2s;
-    }
-    .step:hover::before { background: var(--gold); }
-
-    .step-num {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .step-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .step-body {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-    }
-
-    /* ═══════════════════════════
-       FEATURES
-    ═══════════════════════════ */
-    .features {
-      padding: 8rem 5%;
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-    }
-    .features-inner { max-width: 1280px; margin: 0 auto; }
-
-    .features-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 4rem;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-    .feature {
-      background: var(--bg-2);
-      padding: 2.5rem;
-      transition: background 0.2s;
-    }
-    .feature:hover { background: var(--bg-card); }
-
-    .feature-tag {
-      display: inline-block;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(201,168,76,0.25);
-      padding: 0.2rem 0.6rem;
-      margin-bottom: 1.25rem;
-    }
-    .feature-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .feature-body {
-      font-size: 0.83rem;
-      color: var(--text-dim);
-      line-height: 1.75;
-    }
-
-    /* ═══════════════════════════
-       TESTIMONIAL
-    ═══════════════════════════ */
-    .testimonial {
-      padding: 7rem 5%;
-      border-top: 1px solid var(--border);
-    }
-    .test-inner {
-      max-width: 860px;
-      margin: 0 auto;
       text-align: center;
     }
-    .test-mark {
-      font-size: 5rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 0.6;
-      margin-bottom: 2.5rem;
-      opacity: 0.4;
-    }
-    .test-quote {
-      font-size: clamp(1.35rem, 2.5vw, 1.9rem);
-      font-weight: 700;
-      line-height: 1.45;
-      letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
-    }
-    .test-quote em {
-      font-style: normal;
-      color: var(--gold);
-    }
-    .test-attr {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
+    .stat-num { font-size: 2.5rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.1em; }
 
-    /* ═══════════════════════════
-       PRICING (Teaser)
-    ═══════════════════════════ */
-    .pricing {
-      padding: 8rem 5%;
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .pricing-inner { max-width: 1280px; margin: 0 auto; }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-top: 4rem;
-    }
-
-    .price-card {
-      background: var(--bg-card);
-      padding: 3rem 2.5rem;
-      position: relative;
-    }
-
-    .price-card.featured {
-      background: var(--bg-card);
-      border: 1px solid var(--gold);
-      margin: -1px;
-    }
-
-    .price-badge {
-      display: inline-block;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: #060606;
-      padding: 0.25rem 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .price-plan {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .price-amount {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .price-amount span { font-size: 1.2rem; font-weight: 500; vertical-align: super; }
-    .price-period {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .price-features {
-      list-style: none;
-      margin-bottom: 2.5rem;
-    }
-    .price-features li {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-    .price-features li::before {
-      content: '→';
-      color: var(--gold);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      padding-top: 2px;
-    }
-
-    .btn-plan {
-      width: 100%;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-plan-outline {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border-2);
-    }
-    .btn-plan-outline:hover { border-color: var(--text-muted); color: var(--text); }
-    .btn-plan-gold {
-      background: var(--gold);
-      color: #060606;
-      border: none;
-    }
-    .btn-plan-gold:hover { background: var(--gold-light); }
-
-    /* ═══════════════════════════
-       CTA
-    ═══════════════════════════ */
-    .cta-section {
-      padding: 9rem 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(2.25rem, 4.5vw, 4rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-section p {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin-bottom: 3rem;
-    }
-
-    .cta-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-note {
-      margin-top: 1.5rem;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* ═══════════════════════════
-       FOOTER
-    ═══════════════════════════ */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text); }
-
-    .footer-copy {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* ═══════════════════════════
-       RESPONSIVE
-    ═══════════════════════════ */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-right { max-width: 480px; }
-      .problem-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .how-header { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .price-card.featured { margin: 0; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero h1 { font-size: 2.5rem; }
-      .trust-stats { gap: 2.5rem; }
-      .features-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; flex-wrap: wrap; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT -->
-  <div class="announce">
-    <span class="announce-dot"></span>
-    <strong>Now live in Melbourne & Sydney</strong> — Limited early access open for commercial fit-out contractors
-  </div>
-
-  <!-- NAV -->
   <nav>
     <div class="logo-wrap">
-      <div class="logo-name">Atlas Advantage</div>
+      <div class="logo-name">ATLAS <span>ADVANTAGE</span></div>
       <div class="logo-tag">Signal-to-Pipeline Infrastructure</div>
     </div>
     <ul class="nav-links">
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#features">Features</a></li>
+      <li><a href="#how">Strategy</a></li>
+      <li><a href="#data">Data Sources</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
     <div class="nav-right">
-      <a href="portal.html" class="btn-link">Client Login</a>
-      <a href="#cta" class="btn-gold">Book a Demo</a>
+      <a href="portal.html" class="btn-gold">Client Login</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <div style="max-width:1280px; margin: 0 auto;">
-    <div class="hero">
-      <div class="hero-left">
-        <div class="hero-eyebrow">For Commercial Fit-out Contractors</div>
-        <h1>Win the Fit-out Before<br />Your Competitors <em>Even<br />Get the Invite.</em></h1>
-        <p class="hero-body">
-          70% of fit-outs go to the contractor who gets there first. We monitor the data 24/7 to ensure that name is yours. Walk the site first, win the job fast, and stop fighting for scraps.
-        </p>
-        <div class="hero-ctas">
-          <a href="#cta" class="btn-hero">Book a Demo</a>
-          <a href="#how" class="btn-hero-ghost">See How It Works →</a>
-        </div>
-        <div class="hero-proof">
-          <div class="hero-proof-text">
-            <strong>24-hour</strong> average<br />lead advantage
-          </div>
-          <div class="hero-divider"></div>
-          <div class="hero-proof-text">
-            <strong>80%</strong> of projects<br />decided pre-tender
-          </div>
-          <div class="hero-divider"></div>
-          <div class="hero-proof-text">
-            <strong>Done-for-you</strong><br />outreach & booking
-          </div>
-        </div>
-      </div>
-
-      <!-- LIVE SIGNAL CARD -->
-      <div class="hero-right">
-        <div class="signal-card">
-          <div class="signal-card-header">
-            <span class="signal-card-title">Live Signal Feed</span>
-            <span class="live-badge"><span class="live-dot"></span> Active</span>
-          </div>
-          <div class="signal-items">
-            <div class="signal-item">
-              <span class="sig-dot high"></span>
-              <div class="sig-body">
-                <div class="sig-name">The Gertrude Project</div>
-                <div class="sig-meta">34 Gertrude St, Fitzroy · City of Melbourne</div>
-              </div>
-              <div class="sig-right">
-                <span class="sig-type">Licence Approved</span>
-                <span class="sig-time">2h ago</span>
-              </div>
-            </div>
-            <div class="signal-item">
-              <span class="sig-dot high"></span>
-              <div class="sig-body">
-                <div class="sig-name">CBD Rooftop Bar</div>
-                <div class="sig-meta">55 Swanston St, Melbourne · City of Melbourne</div>
-              </div>
-              <div class="sig-right">
-                <span class="sig-type">Planning Approved</span>
-                <span class="sig-time">5h ago</span>
-              </div>
-            </div>
-            <div class="signal-item">
-              <span class="sig-dot medium"></span>
-              <div class="sig-body">
-                <div class="sig-name">Fitzroy Wine Bar</div>
-                <div class="sig-meta">44 Gertrude St, Fitzroy · City of Yarra</div>
-              </div>
-              <div class="sig-right">
-                <span class="sig-type">DA Lodged</span>
-                <span class="sig-time">12h ago</span>
-              </div>
-            </div>
-            <div class="signal-item">
-              <span class="sig-dot medium"></span>
-              <div class="sig-body">
-                <div class="sig-name">Richmond Taphouse</div>
-                <div class="sig-meta">10 Bridge Rd, Richmond · City of Yarra</div>
-              </div>
-              <div class="sig-right">
-                <span class="sig-type">DA Lodged</span>
-                <span class="sig-time">18h ago</span>
-              </div>
-            </div>
-          </div>
-          <div class="signal-card-footer">
-            22 active signals across Melbourne & Sydney right now
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TRUST BAR -->
-  <div class="trust">
-    <div class="trust-label">Built on real data signals</div>
-    <div class="trust-stats">
-      <div>
-        <div class="trust-stat-num">4,200+</div>
-        <div class="trust-stat-label">Licence approvals monitored monthly</div>
-      </div>
-      <div>
-        <div class="trust-stat-num">24h</div>
-        <div class="trust-stat-label">Average lead advantage over market</div>
-      </div>
-      <div>
-        <div class="trust-stat-num">80%</div>
-        <div class="trust-stat-label">Of fit-outs decided before public tender</div>
-      </div>
-      <div>
-        <div class="trust-stat-num">Done<br /><span style="font-size:1.1rem">for you</span></div>
-        <div class="trust-stat-label">Outreach, follow-up & booking</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEM -->
-  <section class="problem" id="problem">
-    <div class="problem-inner">
-      <div>
-        <div class="eyebrow">The Problem</div>
-        <div class="section-title">By the time you hear about it,<br />the job is already gone.</div>
-        <p class="section-body">
-          Most commercial fit-out contractors are stuck in a reactive cycle — waiting for jobs to appear publicly. 
-          But the best projects are decided long before a single brief goes out.
-        </p>
-        <div class="problem-points">
-          <div class="problem-point">
-            <span class="pp-num">01</span>
-            <div>
-              <div class="pp-title">Reactive Lead Sourcing</div>
-              <p class="pp-body">Job boards, word of mouth, referrals — there's no early warning system. By the time a project surfaces publicly, incumbent contractors already have the relationship locked.</p>
-            </div>
-          </div>
-          <div class="problem-point">
-            <span class="pp-num">02</span>
-            <div>
-              <div class="pp-title">Too Late to the Table</div>
-              <p class="pp-body">Decision-makers have a short window of openness. Miss it and you're quoting against three contractors who were already in the room a week ago.</p>
-            </div>
-          </div>
-          <div class="problem-point">
-            <span class="pp-num">03</span>
-            <div>
-              <div class="pp-title">Invisible High-Intent Leads</div>
-              <p class="pp-body">The highest-quality opportunities — pre-tender, pre-decision — are invisible until it's too late. Unless you have the right data infrastructure to surface them first.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="callout-box">
-        <div class="callout-stat">80%</div>
-        <p class="callout-text">
-          of commercial fit-out projects are <strong>decided before they ever appear publicly.</strong>
-          <br /><br />
-          The window to win is before the brief goes out — and it closes within days of a licence being granted.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="how-inner">
-      <div class="how-header">
-        <div>
-          <div class="eyebrow">How It Works</div>
-          <div class="section-title">We don't just find leads.<br />We book the meeting.</div>
-        </div>
-        <p class="section-body" style="margin-bottom:0">
-          From raw data signal to confirmed site visit — Atlas Advantage handles the entire pipeline so you can stay on the tools.
-        </p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01 — The Trigger</div>
-          <div class="step-title">Real-Time Signal Detection</div>
-          <p class="step-body">We monitor state liquor authority databases and council DA lodgements around the clock. A granted licence means a venue is fit-out ready. Capex decisions happen within days — not months.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02 — The Edge</div>
-          <div class="step-title">AI-Personalised Outreach</div>
-          <p class="step-body">We ingest your best past projects as case studies. Our system crafts tailored outreach matching each venue's vibe, scale, and demographic — positioning your work as the natural fit before they've even started searching.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03 — The Outcome</div>
-          <div class="step-title">Meetings Land in Your Calendar</div>
-          <p class="step-body">We handle all outreach and follow-up, then book confirmed site visits directly into your calendar. You show up. You quote. You win. Done-for-you infrastructure — so you stay on the tools, not the phone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="features-inner">
-      <div class="features-header">
-        <div>
-          <div class="eyebrow">Features</div>
-          <div class="section-title">Everything you need.<br />Nothing you don't.</div>
-        </div>
-        <a href="#cta" class="btn-gold" style="white-space:nowrap">Get Early Access</a>
-      </div>
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-tag">Intelligence</div>
-          <div class="feature-title">Liquor Licence Monitoring</div>
-          <p class="feature-body">Real-time scanning of state liquor authority databases across VIC, NSW, and QLD. New approvals surface in your pipeline within hours of being granted — before any contractor knows to look.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-tag">Intelligence</div>
-          <div class="feature-title">DA Lodgement Alerts</div>
-          <p class="feature-body">Council development application tracking across Melbourne and Sydney metro. Catch projects at the planning stage — before a single brief has been written or a single phone call made.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-tag">Automation</div>
-          <div class="feature-title">Done-For-You Outreach</div>
-          <p class="feature-body">We write it, send it, and follow up. Every message is personalised to the specific venue and matched against your portfolio. You only touch a lead when it's ready to convert.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-tag">Portal</div>
-          <div class="feature-title">Live Client Dashboard</div>
-          <p class="feature-body">A real-time pipeline view showing exactly where every lead sits — signal detected, outreach sent, meeting booked, quote submitted. Full visibility, zero admin overhead.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-tag">Automation</div>
-          <div class="feature-title">Calendar Integration</div>
-          <p class="feature-body">Confirmed site visits land directly in your calendar. No back-and-forth, no chasing replies. Just a meeting notification, a time, and an address.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-tag">Intelligence</div>
-          <div class="feature-title">Portfolio-Matched Scoring</div>
-          <p class="feature-body">We score each lead against your past project portfolio to surface the highest-probability wins — so you invest your time in the venues most likely to say yes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <section class="testimonial">
-    <div class="test-inner">
-      <div class="test-mark">"</div>
-      <p class="test-quote">
-        We quoted a venue <em>three days after the licence was granted.</em>
-        They hadn't even started looking for a contractor yet.
-        We got the job.
+  <div class="hero">
+    <div>
+      <h1>Win the job before <em>anyone else</em> knows it exists.</h1>
+      <p class="hero-body">
+        We monitor liquor licence approvals and DA lodgements in real-time to put you in front of hospitality decision-makers first.
       </p>
-      <div class="test-attr">Early Access Client · Commercial Fit-out Contractor · Melbourne, VIC</div>
+      <button class="btn-hero">Book a Demo</button>
     </div>
-  </section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="pricing-inner">
-      <div style="text-align:center; margin-bottom: 1rem;">
-        <div class="eyebrow" style="justify-content:center; display:flex">Pricing</div>
-        <div class="section-title">Straightforward pricing.<br />No lock-in contracts.</div>
+    <div class="signal-card">
+      <div class="signal-card-header">
+        <span style="font-size:0.7rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">Live Signal Feed</span>
+        <span style="font-size:0.65rem; color:var(--success); font-weight:700;">● Active</span>
       </div>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-plan">Data Tier</div>
-          <div class="price-amount"><span>$</span>497</div>
-          <div class="price-period">per month · 3 Area Credits</div>
-          <ul class="price-features">
-            <li>Live licence approval feed</li>
-            <li>3 target postcodes (Tiers 2-3)</li>
-            <li>Basic lead enrichment</li>
-            <li>Client pipeline dashboard</li>
-            <li>Standard support</li>
-          </ul>
-          <button class="btn-plan btn-plan-outline" onclick="simulatePayment('Data', 497)">Get Started (Mock)</button>
+      <div class="signal-item">
+        <div>
+          <div class="sig-name">The Gertrude Project</div>
+          <div class="sig-meta">Fitzroy, VIC · Liquor Licence</div>
         </div>
-        <div class="price-card featured">
-          <div class="price-badge">Most Popular</div>
-          <div class="price-plan">Partner Tier</div>
-          <div class="price-amount"><span>$</span>1,497</div>
-          <div class="price-period">per month · 10 Area Credits</div>
-          <ul class="price-features">
-            <li>Priority 24h Signal Access</li>
-            <li>10 target postcodes (All Tiers)</li>
-            <li>AI Outreach + Follow-up</li>
-            <li>Calendar booking integration</li>
-            <li>Exclusive Trade Slots</li>
-            <li>Priority support</li>
-          </ul>
-          <button class="btn-plan btn-plan-gold" onclick="simulatePayment('Partner', 1497)">Buy Now (Mock)</button>
+        <span class="sig-type">Approved</span>
+      </div>
+      <div class="signal-item">
+        <div>
+          <div class="sig-name">CBD Rooftop Bar</div>
+          <div class="sig-name" style="font-size:0.8rem; font-weight:400; color:var(--text-muted)">Swanston St, MEL · Planning</div>
         </div>
-        <div class="price-card">
-          <div class="price-plan">Enterprise</div>
-          <div class="price-amount">Custom</div>
-          <div class="price-period">national coverage · white-label available</div>
-          <ul class="price-features">
-            <li>All metro areas nationally</li>
-            <li>Custom data integrations</li>
-            <li>Dedicated account manager</li>
-            <li>White-label portal option</li>
-            <li>SLA + priority onboarding</li>
-          </ul>
-          <button class="btn-plan btn-plan-outline" onclick="document.querySelector('#cta').scrollIntoView()">Contact Us</button>
-        </div>
+        <span class="sig-type" style="color:var(--text-dim); background:#EEE;">DA Lodged</span>
+      </div>
+      <div style="padding:1rem; text-align:center; font-size:0.7rem; color:var(--text-muted);">
+        +14 active signals in Melbourne today
+      </div>
+    </div>
+  </div>
+
+  <section class="stats">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Average Lead Advantage</div>
+      </div>
+      <div>
+        <div class="stat-num">80%</div>
+        <div class="stat-label">Decided Pre-Tender</div>
+      </div>
+      <div>
+        <div class="stat-num">4k+</div>
+        <div class="stat-label">Monthly Signals</div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="cta">
-    <div class="cta-inner">
-      <div class="eyebrow" style="justify-content:center; display:flex; margin-bottom:1.5rem">Limited Early Access</div>
-      <h2>Stop chasing jobs.<br />Start winning them early.</h2>
-      <p>Atlas Advantage is currently in limited early access for commercial fit-out contractors in Melbourne and Sydney. Book a 20-minute demo to see your pipeline in action — no commitment required.</p>
-      <div class="cta-actions">
-        <a href="mailto:hello@atlas-advantage.io" class="btn-hero">Book a Demo →</a>
-        <a href="portal.html" class="btn-hero-ghost">Client Login</a>
-      </div>
-      <div class="cta-note">No lock-in contracts · Setup in under 48 hours · Cancel anytime</div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="logo-wrap">
-      <div class="logo-name" style="font-size:0.85rem">Atlas Advantage</div>
-      <div class="logo-tag">© 2026 · Confidential</div>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="portal.html">Client Login</a></li>
-      <li><a href="mailto:hello@atlas-advantage.io">Contact</a></li>
-    </ul>
-    <div class="footer-copy">Signal-to-Pipeline Infrastructure</div>
-  </footer>
-
-  <script>
-    function simulatePayment(plan, price) {
-      if(confirm(`SIMULATED STRIPE CHECKOUT\nPlan: ${plan}\nAmount: $${price}\n\nProceed to create account and access portal?`)) {
-        // In a real app, this would be a Stripe redirect and then a webhook.
-        // For the mock, we just post to a login endpoint or directly to portal.
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/login';
-        document.body.appendChild(form);
-        form.submit();
-      }
-    }
-  </script>
 </body>
 </html>
