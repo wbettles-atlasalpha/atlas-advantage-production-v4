@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Advantage | Partner Portal</title>
+    <style>
+        :root { --bg: #050505; --text: #e0e0e0; --accent: #ff6600; --card: #111111; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .header { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--card); border: 1px solid #333; padding: 15px; border-radius: 8px; }
+        .card h3 { margin-top: 0; color: var(--accent); }
+        .card p { font-size: 0.9em; line-height: 1.4; margin: 5px 0; }
+        .badge { background: #222; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ATLAS ADVANTAGE: LIVE PIPELINE</h1>
+        <p>Targeting Prime Hospitality Opportunities in Victoria</p>
+    </div>
+    <div class="grid">
+        {% for lead in leads %}
+        <div class="card">
+            <h3>{{ lead.venue_name }}</h3>
+            <p><strong>Location:</strong> {{ lead.address }}</p>
+            <p><strong>Type:</strong> {{ lead.signal_type }}</p>
+            <p><strong>Stage:</strong> <span class="badge">{{ lead.stage }}</span></p>
+            <p style="font-size: 0.8em; color: #666;">Detected: {{ lead.created_at }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

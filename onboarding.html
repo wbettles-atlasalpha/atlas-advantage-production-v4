@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Advantage — Secure Your Trade Seat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B08F35;
+      --navy: #0A192F;
+      --bg: #FFFFFF;
+      --bg-2: #F8F9FB;
+      --border: #E6E9EF;
+      --text: var(--navy);
+      --text-muted: #4A5568;
+    }
+
+    body {
+      background: var(--bg-2);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .onboarding-card {
+      background: #FFF;
+      width: 100%;
+      max-width: 500px;
+      padding: 3.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.07);
+    }
+
+    .step-indicator {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .step-dot { flex: 1; height: 3px; background: var(--border); }
+    .step-dot.active { background: var(--gold); }
+
+    h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; }
+
+    .form-group { margin-bottom: 1.5rem; }
+    label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    input:focus { border-color: var(--gold); }
+
+    .btn-next {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--navy);
+      color: #FFF;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .footer-note { font-size: 0.75rem; text-align: center; color: var(--text-muted); margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <div class="onboarding-card">
+    <div class="step-indicator">
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <h1>Secure Your Trade Seat</h1>
+    <p>Atlas Advantage maintains vertical exclusivity. Select your trade and operational areas to verify availability.</p>
+
+    <form action="#" id="onboardingForm">
+      <div class="form-group">
+        <label>Professional Trade</label>
+        <select required>
+          <option value="">Select Your Trade</option>
+          <option value="builder">Builder / General Contractor</option>
+          <option value="electrical">Electrical Contractor</option>
+          <option value="plumbing">Plumbing Contractor</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Metro Region</label>
+        <select required>
+          <option value="">Select Region</option>
+          <option value="melbourne">Melbourne Metropolitan</option>
+          <option value="sydney">Sydney Metropolitan</option>
+          <option value="brisbane">Brisbane & Gold Coast</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Operating Postcodes</label>
+        <textarea id="postcodeArea" placeholder="e.g. 3000, 3065, 3121" rows="3" required oninput="calculateCredits()"></textarea>
+        <div id="creditUsage" style="font-size: 0.75rem; color: var(--gold); margin-top: 0.5rem; font-weight: 700;">
+          Credits Required: 0 / 5
+        </div>
+        <div id="creditWarning" style="display:none; font-size: 0.7rem; color: #E53E3E; margin-top: 0.4rem; font-weight: 600;">
+          Selection exceeds plan credits. <a href="https://buy.stripe.com/fZueVc31tdDz5ZmbtM2kw01" target="_blank" style="text-decoration:underline; color:#E53E3E;">Purchase additional credits here.</a>
+        </div>
+      </div>
+
+      <script>
+        function calculateCredits() {
+          const area = document.getElementById('postcodeArea').value;
+          const postcodes = area.split(',').map(p => p.trim()).filter(p => p.length >= 4);
+          // Mock logic: 1 postcode = average 2 credits for estimate
+          let estimatedCredits = postcodes.length * 2; 
+          document.getElementById('creditUsage').innerText = `Estimated Credits: ${estimatedCredits} / 5`;
+          
+          if (estimatedCredits > 5) {
+            document.getElementById('creditWarning').style.display = 'block';
+          } else {
+            document.getElementById('creditWarning').style.display = 'none';
+          }
+        }
+      </script>
+
+      <button type="button" class="btn-next" onclick="window.location.href='onboarding_step3.html'">Continue to Setup</button>
+    </form>
+
+    <div class="footer-note">
+      Step 1 of 3 — No payment required today.
+    </div>
+  </div>
+
+</body>
+</html>

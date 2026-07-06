@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Advantage — Win the Job Before Anyone Else Knows It Exists</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #B08F35;
+      --navy: #0A192F;
+      --bg: #FFFFFF;
+      --bg-2: #F8F9FB;
+      --text: var(--navy);
+      --text-muted: #4A5568;
+      --border: #E6E9EF;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    
+    /* NAV */
+    nav { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 1.2rem 10%; 
+      background: #FFF; 
+      border-bottom: 1px solid var(--border); 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+    }
+    .logo { font-size: 1.2rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+    .logo span { color: var(--gold); }
+    .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.9rem; }
+
+    /* HERO */
+    .hero { 
+      padding: 10rem 10% 8rem; 
+      display: grid; 
+      grid-template-columns: 1.1fr 0.9fr; 
+      gap: 6rem; 
+      align-items: center; 
+      max-width: 1400px; 
+      margin: 0 auto; 
+    }
+    .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 2rem; }
+    .hero p { font-size: 1.2rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 2.5rem; }
+    .btn-primary { 
+      padding: 1.2rem 2.5rem; 
+      background: var(--navy); 
+      color: #FFF; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em; 
+      border: none; 
+      cursor: pointer; 
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* SIGNAL CARD */
+    .signal-card { 
+      background: #FFF; 
+      border: 1px solid var(--border); 
+      padding: 2.5rem; 
+      box-shadow: 0 20px 40px -20px rgba(10, 25, 47, 0.1); 
+    }
+    .signal-header { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; justify-content: space-between; }
+    .signal-item { border-bottom: 1px solid #F0F0F0; padding: 1.2rem 0; }
+    .signal-item:last-child { border-bottom: none; }
+    .sig-name { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .sig-meta { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* DARK SECTION */
+    .section-dark { background: var(--navy); color: #FFF; padding: 100px 10%; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+    .feat-card h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.5rem; }
+    .feat-card p { color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing { padding: 100px 10%; text-align: center; background: #FFF; }
+    .pricing h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; }
+    .pricing-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 2rem; 
+      margin: 4rem auto 0; 
+      max-width: 1200px; 
+    }
+    .price-card { border: 1px solid var(--border); padding: 4rem 2rem; text-align: center; transition: transform 0.2s; }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card.featured { border: 3px solid var(--gold); position: relative; }
+    .price-card h3 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1rem; }
+    .price-val { font-size: 4rem; font-weight: 900; color: var(--navy); margin-bottom: 0.5rem; }
+    .price-val span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+    .price-card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; }
+    
+    .footer { padding: 50px 10%; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.05em; }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 6rem; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .features { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">ATLAS <span>ADVANTAGE</span></div>
+    <div class="nav-links"><a href="/login_portal.html">Partner Login</a></div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Win the job before anyone else knows it exists.</h1>
+      <p>We monitor liquor licence approvals and planning lodgements in real-time to put you in front of hospitality decision-makers first.</p>
+      <button class="btn-primary" onclick="window.location.href='/onboarding.html'">Secure Your Trade Seat</button>
+    </div>
+    <div class="signal-card">
+      <div class="signal-header">
+        <span>Live Signal Feed</span>
+        <span style="color: #2E7D32;">● Active</span>
+      </div>
+      <div class="signal-item">
+        <div class="sig-name">Fitzroy Espresso</div>
+        <div class="sig-meta">Gertrude St, Fitzroy · Approved</div>
+      </div>
+      <div class="signal-item">
+        <div class="sig-name">Melbourne Tavern</div>
+        <div class="sig-meta">Collins St, Melbourne · Expansion</div>
+      </div>
+      <div class="signal-item">
+        <div class="sig-name">Richmond Social</div>
+        <div class="sig-meta">Church St, Richmond · DA Lodged</div>
+      </div>
+      <div style="text-align:center; margin-top:2rem; font-size:0.8rem; color:var(--text-muted); font-weight: 600;">
+        +181 active signals detected today
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div style="max-width:800px;">
+      <h2 style="font-size:3.5rem; font-weight: 900; margin-bottom:1.5rem; line-height: 1;">Decided before the tender hits.</h2>
+      <p style="font-size:1.3rem; color:rgba(255,255,255,0.8); line-height: 1.6;">80% of fit-out contracts are awarded before the public tender. If you're waiting for the portal, you've already lost. Atlas Advantage gives you a 24h lead advantage over the entire market.</p>
+    </div>
+    <div class="features">
+      <div class="feat-card">
+        <h3>Real-Time Signals</h3>
+        <p>Direct integration with state liquor boards and planning registries across VIC, NSW, and QLD.</p>
+      </div>
+      <div class="feat-card">
+        <h3>AI Matching</h3>
+        <p>We match projects to your trade and portfolio automatically to ensure you only chase high-probability wins.</p>
+      </div>
+      <div class="feat-card">
+        <h3>Trade Exclusivity</h3>
+        <p>We strictly limit seats per trade per area to protect your margins and eliminate internal competition.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Choose Your Scale</h2>
+    <p style="color: var(--text-muted); font-size: 1.2rem;">No lock-ins. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price-val">$497<span>/mo</span></div>
+        <p>5 Seat Credits per month<br>1 Metro Area Coverage</p>
+        <button class="btn-primary" style="width: 100%;" onclick="window.location.href='/onboarding.html'">Get Started</button>
+      </div>
+      <div class="price-card featured">
+        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #FFF; padding: 4px 15px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">Most Popular</div>
+        <h3>Partner</h3>
+        <div class="price-val">$1,497<span>/mo</span></div>
+        <p>10 Seat Credits per month<br>Full State Coverage</p>
+        <button class="btn-primary" style="width: 100%;" onclick="window.location.href='/onboarding.html'">Go Pro</button>
+      </div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price-val">Custom</div>
+        <p>Unlimited Credits<br>National Coverage & API Access</p>
+        <button class="btn-primary" style="width: 100%; background: #FFF; color: var(--navy); border: 2px solid var(--navy);">Contact Us</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 ATLAS ADVANTAGE. A DIVISION OF THE ATLAS GROUP.</p>
+  </footer>
+</body>
+</html>

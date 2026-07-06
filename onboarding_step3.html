@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Advantage — Setup Your Infrastructure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B08F35;
+      --navy: #0A192F;
+      --bg: #FFFFFF;
+      --bg-2: #F8F9FB;
+      --border: #E6E9EF;
+      --text: var(--navy);
+      --text-muted: #4A5568;
+      --success: #2D6A4F;
+    }
+
+    body {
+      background: var(--bg-2);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .onboarding-card {
+      background: #FFF;
+      width: 100%;
+      max-width: 600px;
+      padding: 4rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.07);
+    }
+
+    .step-indicator {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .step-dot { flex: 1; height: 3px; background: var(--border); }
+    .step-dot.active { background: var(--gold); }
+
+    h1 { font-size: 1.6rem; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2.5rem; }
+
+    .setup-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .setup-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .setup-item:last-child { margin-bottom: 0; }
+
+    .setup-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--navy);
+      color: #FFF;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .setup-text h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .setup-text p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0; }
+
+    .form-group { margin-bottom: 2rem; }
+    label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem; }
+    
+    .calendly-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--navy);
+      background: transparent;
+      color: var(--navy);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .calendly-btn:hover { background: var(--navy); color: #FFF; }
+
+    .btn-next {
+      width: 100%;
+      padding: 1.2rem;
+      background: var(--gold);
+      color: #FFF;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .footer-note { font-size: 0.75rem; text-align: center; color: var(--text-muted); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="onboarding-card">
+    <div class="step-indicator">
+      <div class="step-dot active"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <h1>Automated Site Visits</h1>
+    <p>The Atlas Partner plan includes managed outreach and appointment setting. Connect your calendar to allow our team to book site visits directly.</p>
+
+    <div class="setup-box">
+      <div class="setup-item">
+        <div class="setup-icon">1</div>
+        <div class="setup-text">
+          <h4>Connect Calendly</h4>
+          <p>Link your Calendly account so we know your availability for site visits and initial quotes.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <div class="setup-icon">2</div>
+        <div class="setup-text">
+          <h4>Managed Booking</h4>
+          <p>When our team identifies a project, we send a personalised outreach from <strong>partnerships@atlas-advantage.io</strong> on your behalf.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #fdfdfd; border: 1px dashed var(--border); padding: 1.5rem; margin-bottom: 2rem;">
+      <div style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">Sample Outreach Email</div>
+      <div style="font-size: 0.85rem; line-height: 1.6; color: var(--text-dim);">
+        <strong>Subject:</strong> Project at [Project Address]<br><br>
+        Hi [Name],<br><br>
+        [Contractor Name] here from <strong>[Business Name]</strong>. Congratulations on the recent approval for your project at [Project Address].<br><br>
+        We have a lot of experience with projects similar to yours and would welcome the opportunity to discuss your vision for the space in more detail.<br><br>
+        I have provided some samples of our previous work in the link below:<br><br>
+        [Link to Contractor Portfolio]<br><br>
+        I have also included a link to my calendar below if you would like to book in some time for a preliminary call or a site visit.<br><br>
+        [Calendly Link]<br><br>
+        I look forward to hearing from you soon.<br><br>
+        Best,<br>
+        [Contractor Name]
+      </div>
+    </div>
+
+    <form action="#">
+      <div class="form-group">
+        <label>Calendar Connection</label>
+        <button type="button" class="calendly-btn">
+          Connect Calendly Account
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label>Alternative Booking Link (Optional)</label>
+        <input type="url" placeholder="https://calendly.com/your-name/fitout-quote" />
+      </div>
+
+      <button type="button" class="btn-next" onclick="alert('Final Step: Secure Your Territory (Stripe Trial Collection)')">Continue to Final Step</button>
+    </form>
+
+    <div class="footer-note">
+      Step 3 of 4 — Almost finished.
+    </div>
+  </div>
+
+</body>
+</html>
